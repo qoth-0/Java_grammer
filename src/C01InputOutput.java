@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class C01InputOutput {
     public static void main(String[] args) {
+
 ////        출력 : System.out
 ////        print는 출력 후 줄바꿈 없음
 //        System.out.print(1);

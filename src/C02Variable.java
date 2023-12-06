@@ -70,6 +70,9 @@ public class C02Variable {
 //        int n1 = 10;
 //        double d = n1;
 //        System.out.println(d);
+
+//        char형 비교를 위해 묵시적 타입변환
+//        System.out.println('A' > 'a');
 //
 ////        에러 발생(묵시적 타입변환 시 큰타입으로의 변환은 불가능)
 //        double d1 = 10.2;
