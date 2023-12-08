@@ -1,9 +1,10 @@
 import java.math.BigDecimal;
+import java.util.Arrays;
 
 public class C02Variable {
     public static void main(String[] args) {
 
-////        byte로 썼을 때 -128~127까지의 표현이 가능하고, 그 ㅇ이상을 세팅할 때 오버/언더 플로우 발생
+////        byte로 썼을 때 -128~127까지의 표현이 가능하고, 그 이상을 세팅할 때 오버/언더 플로우 발생
 //        byte a =  127;
 //        byte b =  -128;
 //        a++;
@@ -97,17 +98,39 @@ public class C02Variable {
 //        double d2 = a/(double)b;
 //        System.out.println(d2);
 
-//        변수와 상수
-//        선언과 동시에 초기화
-        int a1 = 10;
-//        변수값 변경
-        a1 = 20;
-//        선언만 한 뒤에 나중에 초기화
-        int a2; // 선언만 했을 때는 값이 0으로 초기화
-        a2 = 20;
-//        상수는 값의 재할당이 불가능(대문자로 명명)
-        final int AGES = 20;
-//        AGES = 30;  //에러 발생(값 변경불가)
+////        변수와 상수
+////        선언과 동시에 초기화
+//        int a1 = 10;
+////        변수값 변경
+//        a1 = 20;
+
+////        선언만 한 뒤에 나중에 초기화
+////        지역변수로 선언만 했을 때는 값이 0으로 초기화 x
+//        int a2;
+//        System.out.println(a2); // 에러
+
+////        객체로 선언 시 int는 0, boolean은 false, string은 null이 할당됨
+//        int [] arr1  = new int[5];
+//        boolean [] arr2  = new boolean[5];
+//        String [] arr3  = new String[5];
+//        System.out.println(Arrays.toString(arr1)); // 0
+//        System.out.println(Arrays.toString(arr2)); // false
+//        System.out.println(Arrays.toString(arr3)); // null
+
+////        상수는 값의 재할당이 불가능(대문자로 명명)
+//        final int AGES = 20;
+////        AGES = 30;  //에러 발생(값 변경불가)
+
+////        상수는 선언만 한 뒤에 나중에 초기화 하는 방식이 자바 8이후 가능함
+//        final int ages2;
+//        ages2 = 10;
+
+
+
+
+
+
+
 
 
     }
