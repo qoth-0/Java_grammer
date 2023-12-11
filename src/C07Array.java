@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Scanner;
 
 public class C07Array {
     public static void main(String[] args) {
@@ -101,13 +102,108 @@ public class C07Array {
 //        }
 //        System.out.println(Arrays.toString(arr));
 
-//        방법3. StreamApi, lambda를 활용
-        int[] arr = {5,1,2,7,3,1,2};
-        int[] result = Arrays.stream(arr) // arr을 대상으로 stream 객체생성
-                       .boxed() // int -> Integer로 형변환한 stream 객체생성
-                       .sorted(Comparator.reverseOrder()) // 내림차순 정렬
-                       .mapToInt(a->a) // Integer -> int 변환
-                       .toArray(); // stream 객체를 배열로 변환
+////        방법3. StreamApi, lambda를 활용
+//        int[] arr = {5,1,2,7,3,1,2};
+//        int[] result = Arrays.stream(arr) // arr을 대상으로 stream 객체생성
+//                       .boxed() // int -> Integer로 형변환한 stream 객체생성
+//                       .sorted(Comparator.reverseOrder()) // 내림차순 정렬
+//                       .mapToInt(a->a) // Integer -> int 변환
+//                       .toArray(); // stream 객체를 배열로 변환
+
+////        선택정렬
+//        int[] arr = {30, 22, 20, 25, 12};
+//        for (int i=0; i<arr.length-1; i++) {
+//            for (int j=i+1; j<arr.length; j++) {
+//                if(arr[i] > arr[j]) {
+//                    int tmp = arr[i];
+//                    arr[i] = arr[j];
+//                    arr[j] = tmp;
+//                }
+//            }
+//        }
+//        System.out.println(Arrays.toString(arr));
+
+////        숫자 조합의 합 : 각기 다른 숫자의 배열이 있을 때 만들어질 수 있는 2개의 조합의 합을 출력하라(중복x)
+//        int[] arr = {10, 20, 30, 40, 50, 60};
+//        for (int i=0; i<arr.length-1; i++) {
+//            for (int j=i+1; j<arr.length; j++) {
+//                System.out.println(arr[i] + " + " + arr[j] + " = " + (arr[i] + arr[j]));
+//            }
+//        }
+
+////        중복제거하기
+//        int[] arr = {10, 10, 40, 5, 7};
+//        int[] new_arr = new int[arr.length];
+//        int index = 0;
+//        Arrays.sort(arr);
+//        System.out.println(Arrays.toString(arr)); // 5, 7, 10, 10, 40
+//        for (int i=0; i<arr.length-1; i++) {
+//            if(arr[i] != arr[i+1]) {
+//                new_arr[index] = arr[i];
+//                index++;
+//            }
+//        }
+//        new_arr[index++] = arr[arr.length-1];
+//        System.out.println(Arrays.toString(new_arr)); // 5, 7, 10, 40, 0
+//        int[] answer = Arrays.copyOfRange(new_arr, 0, index);
+//        System.out.println(Arrays.toString(answer)); // 5, 7, 10, 40
+
+////        프로그래머스 - 두 개 뽑아서 더하기
+//        int[] numbers = {5,0,2,7};
+//        int index = 0;
+//        int[] answer = new int[numbers.length*numbers.length];
+//        for(int i=0; i<numbers.length-1; i++) {
+//            for(int j=i+1; j<numbers.length; j++) {
+//                answer[index] = numbers[i] + numbers[j];
+//                index++;
+//            }
+//        }
+//        int[] new_answer = Arrays.copyOfRange(answer, 0, index);
+//        Arrays.sort(new_answer);
+//        int index1 = 0;
+//        int[] result = new int[new_answer.length];
+//        for(int i=0; i<new_answer.length-1; i++) {
+//            if(new_answer[i] != new_answer[i+1]) {
+//                result[index1] = new_answer[i];
+//                index1++;
+//            }
+//        }
+//        result[index1++] = new_answer[new_answer.length-1];
+//        int[] new_result = Arrays.copyOfRange(result, 0, index1);
+//        System.out.println(Arrays.toString(new_result)); // 2, 5, 7, 9, 12
+
+////        버블정렬
+//        int[] arr = {5, 2, 4, 3, 1};
+//        for(int i = 0; i<arr.length; i++) {
+//            for(int j=0; j<arr.length-1-i; j++) {
+//                if(arr[j] > arr[j+1]) {
+//                    int temp = arr[j];
+//                    arr[j] = arr[j+1];
+//                    arr[j+1] = temp;
+//                }
+//            }
+//        }
+//        System.out.println(Arrays.toString(arr));
+
+//        버블정렬 최적화 - 완료되면 종료
+        int[] arr = {5, 1, 2, 3, 4};
+        for(int i = 0; i<arr.length-1; i++) { // 마지막 비교는 무의미
+            boolean isChanged = false;
+            for(int j=0; j<arr.length-1-i; j++) {
+                if(arr[j] > arr[j+1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                    isChanged = true;
+                }
+            }
+            if (isChanged == false) {
+                break;
+            }
+        }
+        System.out.println(Arrays.toString(arr));
+
+
 
 
     }
