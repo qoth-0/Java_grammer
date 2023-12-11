@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.OptionalInt;
 import java.util.Scanner;
 
 public class C07Array {
@@ -185,23 +186,95 @@ public class C07Array {
 //        }
 //        System.out.println(Arrays.toString(arr));
 
-//        버블정렬 최적화 - 완료되면 종료
-        int[] arr = {5, 1, 2, 3, 4};
-        for(int i = 0; i<arr.length-1; i++) { // 마지막 비교는 무의미
-            boolean isChanged = false;
-            for(int j=0; j<arr.length-1-i; j++) {
-                if(arr[j] > arr[j+1]) {
-                    int temp = arr[j];
-                    arr[j] = arr[j+1];
-                    arr[j+1] = temp;
-                    isChanged = true;
-                }
+////        버블정렬 최적화 - 완료되면 종료
+//        int[] arr = {5, 1, 2, 3, 4};
+//        for(int i = 0; i<arr.length-1; i++) { // 마지막 비교는 무의미
+//            boolean isChanged = false;
+//            for(int j=0; j<arr.length-1-i; j++) {
+//                if(arr[j] > arr[j+1]) {
+//                    int temp = arr[j];
+//                    arr[j] = arr[j+1];
+//                    arr[j+1] = temp;
+//                    isChanged = true;
+//                }
+//            }
+//            if (isChanged == false) {
+//                break;
+//            }
+//        }
+//        System.out.println(Arrays.toString(arr));
+
+////        배열의 검색(몇번째 인덱스인지) - O(n)
+//        int[] arr = {5, 3, 1, 8, 7};
+//        int answer = 0;
+//        for (int i=0; i<arr.length; i++) {
+//            if(arr[i] == 8) {
+//                answer = i;
+//                break;
+//            }
+//        }
+//        System.out.println(answer);
+
+////        이진검색(Binary Search) - O(logn)
+////        사전에 오름차순 정렬이 되어있어야 이진검색 가능
+//        int[] arr = {1, 2, 4, 8, 10};
+//        int answer = Arrays.binarySearch(arr, 8);
+//        System.out.println(answer);
+
+////        배열간 비교 : equals() - 순서까지 동일해야 true
+//        int[] arr1 = {10, 20, 30};
+//        int[] arr2 = {10, 30, 20};
+//        System.out.println(Arrays.equals(arr1, arr2)); // false
+
+////        배열 복사 : copyOf(배열, end), copyOfRange(배열, start, end)
+//        int[] arr = {1, 2, 3, 4, 5};
+//        int[] arr1 = Arrays.copyOf(arr, 10);
+//        int[] arr2 = Arrays.copyOfRange(arr, 1, 4);
+//        System.out.println(Arrays.toString(arr1)); // 1, 2, 3, 4, 5, 0, 0, 0, 0, 0
+//        System.out.println(Arrays.toString(arr2)); // 2, 3, 4
+
+//////        2차원 배열 할당
+//        int[][] arr = new int[2][3];
+//        arr[0][0] = 1;
+//        arr[0][1] = 2;
+//        arr[0][2] = 3;
+//        arr[1][0] = 4;
+//        arr[1][1] = 5;
+//        arr[1][2] = 6;
+//        System.out.println(Arrays.deepToString(arr)); // 2차원배열 출력 : deepToString()
+
+////        2차원 가변배열 선언 및 할당
+//        int[][] arr = new int[3][];
+//        arr[0] = new int[2]; // 사이즈 우선 지정 없이 할당하면 에러발생
+//        arr[1] = new int[3];
+//        arr[2] = new int[4];
+
+////        2차원 배열 리터럴방식 선언 및 할당
+//        int[][] arr = {{1, 2}, {1, 2, 3}, {1, 2, 3, 4}};
+
+////          2차원 배열 for문으로 할당
+//        int[][] arr = new int[3][4];
+//        int count = 1;
+//        for(int i=0; i<arr.length; i++) {
+//            for(int j=0; j<arr[i].length; j++) {
+//                arr[i][j] = count;
+//                count++;
+//            }
+//        }
+//        System.out.println(Arrays.deepToString(arr));
+
+//        가변배열 for문 할당
+        int[][] arr = new int[5][];
+        int count = 1;
+        for(int i=0; i<arr.length; i++) {
+            arr[i] = new int[i+1];
+            for(int j=0; j<arr[i].length; j++) {
+                arr[i][j] = count * 10;
             }
-            if (isChanged == false) {
-                break;
-            }
+            count++;
         }
-        System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.deepToString(arr));
+
 
 
 
