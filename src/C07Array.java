@@ -111,7 +111,7 @@ public class C07Array {
 //                       .mapToInt(a->a) // Integer -> int 변환
 //                       .toArray(); // stream 객체를 배열로 변환
 
-////        선택정렬
+////        선택정렬 - O(n^2)
 //        int[] arr = {30, 22, 20, 25, 12};
 //        for (int i=0; i<arr.length-1; i++) {
 //            for (int j=i+1; j<arr.length; j++) {
@@ -173,7 +173,7 @@ public class C07Array {
 //        int[] new_result = Arrays.copyOfRange(result, 0, index1);
 //        System.out.println(Arrays.toString(new_result)); // 2, 5, 7, 9, 12
 
-////        버블정렬
+////        버블정렬 - O(n^2)
 //        int[] arr = {5, 2, 4, 3, 1};
 //        for(int i = 0; i<arr.length; i++) {
 //            for(int j=0; j<arr.length-1-i; j++) {
@@ -274,6 +274,7 @@ public class C07Array {
             count++;
         }
         System.out.println(Arrays.deepToString(arr));
+
 
 
 
