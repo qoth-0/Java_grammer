@@ -79,21 +79,67 @@ public class C09Map {
 //            myMap.put(a, myMap.getOrDefault(a, 0) + 1);
 //        }
 
-        String[] participant = {"leo", "kiki", "eden"};
-        String[] completion = {"eden", "kiki"};
-        List<String> list1 = new ArrayList<>(Arrays.asList(participant));
-        List<String> list2 = new ArrayList<>(Arrays.asList(completion));
-        Map<String, Integer> myMap = new HashMap<>();
+////        프로그래머스 : 완주하지 못한 선수 - list로 해결 시 효율성 테스트에서 실패(remove의 성능저하)
+//        String[] participant = {"leo", "kiki", "eden"};
+//        String[] completion = {"eden", "kiki"};
+//        Map<String, Integer> myMap = new HashMap<>();
+//        String answer = "";
+//
+//        for(String a : participant) {
+//            myMap.put(a, myMap.getOrDefault(a, 0) + 1);
+//        }
+//        for(String a : completion) {
+//            myMap.put(a, myMap.get(a)-1);
+//        }
+//        for(String a : myMap.keySet()) {
+//            if(myMap.get(a) != 0) {
+//                answer = a;
+//            }
+//        }
+//        System.out.println(answer);
 
-        for(String a : list1) {
-            myMap.put(a, myMap.getOrDefault(a, 0) + 1);
-        }
-        for(String a : list2) {
-            myMap.put(a, myMap.get(a)-1);
-        }
-        for(String a : myMap.keySet()) {
-            System.out.println(a);
-        }
+////        이중 for문으로 해결 시 동명이인도 삭제됨 + 시간복잡도
+//        for(int i=0; i<participant.length; i++) {
+//            boolean isSame = false;
+//            for(int j=0; j<completion.length; j++) {
+//                if(participant[i].equals(completion[i]) {
+//                    isSame = true;
+//                }
+//            }
+//            if(!isSame) {
+//                break;
+//            }
+//        }
+////        list로 해결 시 시간복잡도의 문제가 생김
+//        List<String> participant_list = new ArrayList<>(Arrays.asList(participant));
+//        for(String a : completion) {
+//            if(participant_list.contains(a)) {
+//                participant_list.remove(a);
+//            }
+//        }
+//        String answer = participant_list.get(0);
+
+//        LinkedHashMap : 데이터 삽입 순서 유지
+        Map<String, Integer> myMap1 = new LinkedHashMap<>();
+        myMap1.put("hello5",1);
+        myMap1.put("hello4",1);
+        myMap1.put("hello3",1);
+        myMap1.put("hello2",1);
+        myMap1.put("hello1",1);
+        System.out.println(myMap1); // hello5=1, hello4=1, hello3=1, hello2=1, hello1=1
+
+//        TreeMap : key를 통해 데이터 정렬
+        Map<String, Integer> myMap2 = new TreeMap<>();
+        myMap2.put("hello5",1);
+        myMap2.put("hello4",1);
+        myMap2.put("hello3",1);
+        myMap2.put("hello2",1);
+        myMap2.put("hello1",1);
+        System.out.println(myMap2); // hello1=1, hello2=1, hello3=1, hello4=1, hello5=1
+
+
+
+
 
 
 
