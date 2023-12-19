@@ -1,9 +1,7 @@
-import java.util.*;
-import java.util.concurrent.ArrayBlockingQueue;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
-
-
-public class C11StackQueue {
+public class C11StackQueueDeque {
     public static void main(String[] args) {
 
 //        Stack<Integer> mySt = new Stack<>();
@@ -154,7 +152,7 @@ public class C11StackQueue {
 //        }
 //        System.out.println(answer);
 
-////        list로 구현 - 시간초과 바라생
+////        list로 구현 - 시간초과 발생
 //        int[] scoville = {1, 2};
 //        int k = 7;
 //        int a, b, c;
@@ -181,6 +179,12 @@ public class C11StackQueue {
 //
 //        }
 //        System.out.println(answer);
+
+//        ArrayDeque : 양방향에서 데이터를 삽입/제거 가능 성능이 스택,큐보다 빠름
+        Deque<Integer> deque = new ArrayDeque<>();
+        deque.addFirst(2);;
+        deque.addFirst(20);
+
 
 
 
