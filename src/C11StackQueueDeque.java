@@ -182,8 +182,18 @@ public class C11StackQueueDeque {
 
 //        ArrayDeque : 양방향에서 데이터를 삽입/제거 가능 성능이 스택,큐보다 빠름
         Deque<Integer> deque = new ArrayDeque<>();
-        deque.addFirst(2);;
-        deque.addFirst(20);
+//        addFirst() : 맨앞에 삽입
+        deque.addFirst(10);;
+        deque.addFirst(20); // 20 10
+//        peekLast() : 맨뒤 요소 반환, 삭제 x
+        System.out.println(deque.peekLast()); // 10
+        deque.addLast(30);
+        System.out.println(deque); // 20 10 30
+//        pollFirst(), pollLast() : 요소 반환 및 삭제
+        System.out.println(deque.pollFirst()); // 20
+        System.out.println(deque.pollLast()); // 30
+        System.out.println(deque); // 10
+
 
 
 
