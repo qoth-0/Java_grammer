@@ -193,6 +193,36 @@ void permuMax (List<Integer> list, List<List<Integer>> permutations, List<Intege
         }
     }
 
+//    프로그래머스 문제 : 피로도
+//static int max = 0;
+//    static int temp = 0;
+//    public static void main(String[] args) {
+//        int k = 80;
+//        int[][] dungeons = {{80,20},{50,40},{30,10}};
+//        boolean[] visited= new boolean[dungeons.length];
+//        Main main = new Main();
+//        main.d(k, dungeons, visited);
+//        System.out.println(max);
+//
+//    }
+//    void d (int k, int[][] dungeons, boolean[] visited) {
+//
+//        if(temp > max) {
+//            max = temp;
+//        }
+//
+//        for (int i = 0; i < dungeons.length; i++) {
+//            if (visited[i] == false && k >= dungeons[i][0]) {
+//                visited[i] = true;
+//                temp++;
+//                k -= dungeons[i][1];
+//                d(k, dungeons, visited);
+//                visited[i] = false;
+//                temp--;
+//                k += dungeons[i][1];
+//            }
+//        }
+//    }
 
 
 }
