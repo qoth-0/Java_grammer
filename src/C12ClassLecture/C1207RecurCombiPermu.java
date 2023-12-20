@@ -173,27 +173,27 @@ void permuMax (List<Integer> list, List<List<Integer>> permutations, List<Intege
         }
     }
 
-//    강사님 풀이
-    void permutation(List<Integer> myList, List<List<Integer>> combi_list, boolean[] visited, int temp, int count) {
-        if(count == 3) {
-            if(temp > max) {
-                max = temp;
-            }
-            return;
+////    강사님 풀이
+//    void permutation(List<Integer> myList, List<List<Integer>> combi_list, boolean[] visited, int temp, int count) {
+//        if(count == 3) {
+//            if(temp > max) {
+//                max = temp;
+//            }
+//            return;
+//
+//        }
+//        for(int i=0; i<myList.size(); i++) {
+//            if(visited[i] == false) {
+//                visited[i] = true;
+//                temp += myList.get(i);
+//                permutation(myList, combi_list, visited, temp, count+1);
+//                temp -= myList.get(i);
+//                visited[i] = false;
+//            }
+//        }
+//    }
 
-        }
-        for(int i=0; i<myList.size(); i++) {
-            if(visited[i] == false) {
-                visited[i] = true;
-                temp += myList.get(i);
-                permutation(myList, combi_list, visited, temp, count+1);
-                temp -= myList.get(i);
-                visited[i] = false;
-            }
-        }
-    }
-
-//    프로그래머스 문제 : 피로도
+////    프로그래머스 문제 : 피로도
 //static int max = 0;
 //    static int temp = 0;
 //    public static void main(String[] args) {
@@ -210,6 +210,9 @@ void permuMax (List<Integer> list, List<List<Integer>> permutations, List<Intege
 //        if(temp > max) {
 //            max = temp;
 //        }
+//        if(max == dungeons.length) {
+//            return;
+//        }
 //
 //        for (int i = 0; i < dungeons.length; i++) {
 //            if (visited[i] == false && k >= dungeons[i][0]) {
@@ -223,6 +226,26 @@ void permuMax (List<Integer> list, List<List<Integer>> permutations, List<Intege
 //            }
 //        }
 //    }
+
+////    d유정이 코드 ~~정석~~
+//class Solution {
+//    static int answer = 0;
+//    public int solution(int k, int[][] dungeons) {
+//        boolean[] visited = new boolean[dungeons.length];
+//        DFS(0, k, visited, dungeons);
+//        return answer;
+//    }
+//    static void DFS(int L, int k, boolean[] visited, int[][] dungeons){
+//        for(int i=0; i<dungeons.length; i++){
+//            if(!visited[i] && k>=dungeons[i][0]) {
+//                visited[i]=true;
+//                DFS(L+1, k-dungeons[i][1], visited, dungeons);
+//                visited[i]=false;
+//            }
+//        }
+//        answer = Math.max(answer, L);
+//    }
+//}
 
 
 }
