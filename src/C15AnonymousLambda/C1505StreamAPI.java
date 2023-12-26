@@ -25,7 +25,7 @@ public class C1505StreamAPI {
 //
 ////        참조변수의 스트림 변환의 경우 제네릭의 타입소거 문제 발생
 ////        제네릭의 타입소거란, 자바 버전의 호환성을 위해 제네릭타입을 런타임 시점에 제거하는 것을 의미
-//        String[] stArr = strStream.filter(a -> a.length() <=4).toArray(a -> new String[a]); // int랑 달리 그냥 toArray()로 하면 에러발생, 어떤 타입으로 toArray할 건지 명시필요
+//        String[] stArr = strStream.filter(a -> a.length() <=4).toArray(a -> new String[a]); // int랑 달리 String의 경우 toArray()로 하면 에러발생, 어떤 타입으로 toArray할 건지 명시필요
 ////        메소드 참조방식으로 표현하는 것이 더 일반적 (클래스 :: 메소드)
 //        String[] stArr2 = strStream.filter(a -> a.length() <=4).toArray(String[]::new);
 
@@ -139,9 +139,9 @@ public class C1505StreamAPI {
 
 //        orElse관련 메소드 사용하여 null(빈값) 처리
 //        orElse(), orElseGet(), orElseThrow()
-//        orElse() : 값이 있으면 해당 값 return, 없으면 default 지정값 return
+//        orElse(기본값) : 값이 있으면 해당 값 return, 없으면 default 지정값 return
         System.out.println(opt2.orElse("").compareTo("abc"));
-//        orElseGet() : 값이 있으면 해당값 return, 없으면 람다함수 또는 메소드 참조 실행
+//        orElseGet(함수) : 값이 있으면 해당값 return, 없으면 람다함수 또는 메소드 참조 실행
         System.out.println(opt1.orElseGet(() -> new String()).compareTo("abc"));
         System.out.println(opt1.orElseGet(String::new).compareTo("abc"));
 //        orElseThrow() : 값이 있으면 해당값 return, 없으면 지정된 예외 강제 발생 - 자주 사용
@@ -158,6 +158,8 @@ public class C1505StreamAPI {
         System.out.println(oi.orElseThrow(() -> new NoSuchElementException("no value")));
 
 
+//        Optional.of() - null 못들어감
+//        Optional.ofNullable() - null 들어갈 수 있음
 
 
     }
