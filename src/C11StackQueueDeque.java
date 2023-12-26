@@ -1,5 +1,7 @@
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class C11StackQueueDeque {
     public static void main(String[] args) {
@@ -117,7 +119,7 @@ public class C11StackQueueDeque {
 //        q.offer("hello4");
 //        System.out.println(q); // hello1, hello2, hello3
 
-//        우선순위큐
+////        우선순위큐
 //        Queue<Integer> q = new PriorityQueue<>();
 //        q.add(30);
 //        q.add(20);
