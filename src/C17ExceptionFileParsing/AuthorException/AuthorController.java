@@ -35,17 +35,15 @@ class AuthorController {
                     String author_email = sc.nextLine();
                     System.out.println("password를 입력해주세요.");
                     String author_password = sc.nextLine();
-                    Optional<Author> loginedAuthor = Optional.empty();
                     try {
-                        loginedAuthor = authorService.login(author_email, author_password); // trycatch
+                        Author loginedAuthor = authorService.login(author_email, author_password); // trycatch
+                        System.out.println(loginedAuthor.getName() + "님 환영합니다.");
                     }catch (IllegalArgumentException e) {
                         System.out.println(e.getMessage());
                     }catch (NoSuchElementException e) {
                         System.out.println(e.getMessage());
                     }
-                    if(loginedAuthor.isPresent()) {
-                        System.out.println(loginedAuthor.get().getName() + "님 환영합니다.");
-                    }
+
                     break;
 
                 default:

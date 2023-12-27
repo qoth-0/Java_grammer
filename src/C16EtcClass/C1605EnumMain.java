@@ -13,7 +13,7 @@ public class C1605EnumMain {
         s3.setRole(Role.GENERAL_USER); // String으로 세팅 불가
         System.out.println(s3.getRole().getClass()); // class C16EtcClass.Role
 //        enum값 내부에는 저장된 순서대로 0부터 index값이 내부적으로 할당되어 있음
-        System.out.println(s3.getRole().ordinal()); // 0
+        System.out.println(s3.getRole().ordinal()); // 0 - 가독성이 떨어지므로 13행처럼 enum타입 그대로 쓰길 권장
 
 
 

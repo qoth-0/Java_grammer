@@ -54,5 +54,6 @@ public class C1701Exception {
             throw new IllegalArgumentException("비밀번호가 너무 짧습니다.");
         }
 //        자바에서는 controller로 던져서 try/catch하도록
+
     }
 }
