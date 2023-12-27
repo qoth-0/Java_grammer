@@ -8,7 +8,9 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class C1705JsonWiithJackSonHttp {
@@ -19,22 +21,34 @@ public class C1705JsonWiithJackSonHttp {
         ObjectMapper mapper = new ObjectMapper();
 //        http 요청 객체 생성
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://jsonplaceholder.typicode.com/posts/1")) // create(요청할 주소) - 단일 데이터
+//                .uri(URI.create("https://jsonplaceholder.typicode.com/posts/1")) // create(요청할 주소) - 단일 데이터
+                .uri(URI.create("https://jsonplaceholder.typicode.com/posts")) // 여러 데이터
                 .GET() // 데이터를 받기위한 GET요청
                 .build();
 //        http응답객체 생성
         try {
+
+//            Json 역직렬화 (Json -> Java객체) : 1)JsonNode(Tree구조), 2)객체
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString()); // 값을 string으로 반환
             String post = response.body();
             JsonNode jsonNode = mapper.readTree(post);
-//            Map없이 바로 매개변수로 입력
-            Post post1 = new Post(jsonNode.get("userId").asInt(), jsonNode.get("id").asInt(), jsonNode.get("title").asText(), jsonNode.get("body").asText());
-            System.out.println(post1);
-//            readValue를 사용해서 객체로 곧바로 매핑 - 기본생성자 필요
-            Post post2 = mapper.readValue(post, Post.class); // Post.class로 Post클래스 형태로 바로 변환
-            System.out.println(post2);
+////            Map없이 바로 매개변수로 입력
+//            Post post1 = new Post(jsonNode.get("userId").asInt(), jsonNode.get("id").asInt(), jsonNode.get("title").asText(), jsonNode.get("body").asText());
+//            System.out.println(post1);
+////            readValue를 사용해서 객체로 곧바로 매핑 - 기본생성자 필요
+//            Post post2 = mapper.readValue(post, Post.class); // Post.class로 Post클래스 형태로 바로 변환
+//            System.out.println(post2);
 
 //            JsonNode는 트리구조이므로, for(JsonNode j : jsonNode)형식 가능 (리스트형태도 같은 JsonNode형식으로 받기 가능)
+            List<Post> postList = new ArrayList<>();
+            for(JsonNode a : jsonNode) {
+                Post myPost = mapper.readValue(a.toString(), Post.class); // mapper.readValue로 알아서 Post클래스 형태로 바꿔줌
+                postList.add(myPost);
+            }
+            System.out.println(postList); // id : 1 title : sunt aut facere repellat pr ....
+//            Json 직렬화(java객체를 json형태로 변환)
+            String serialized_data = mapper.writeValueAsString(postList); // {"userId":1,"id":1,"title": .... - json형태로 변환됨
+            System.out.println(serialized_data);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
